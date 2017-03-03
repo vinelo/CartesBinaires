@@ -8,7 +8,7 @@ namespace CartesBinairesV1
 {
     class Model
     {
-        const int NUMBER_OF_BITS = 6;
+        public const int NUMBER_OF_BITS = 6;
 
         private Bit[] _bits;
 
@@ -27,6 +27,27 @@ namespace CartesBinairesV1
             {
                 Bits[i] = new Bit(ValueOfBit);
                 ValueOfBit *= 2;
+                switch(i)
+                {
+                    case 1:
+                        Bits[i].Image = CartesBinairesV1.Properties.Resources._1;
+                        break;
+                    case 2:
+                        Bits[i].Image = CartesBinairesV1.Properties.Resources._2;
+                        break;
+                    case 3:
+                        Bits[i].Image = CartesBinairesV1.Properties.Resources._4;
+                        break;
+                    case 4:
+                        Bits[i].Image = CartesBinairesV1.Properties.Resources._8;
+                        break;
+                    case 5:
+                        Bits[i].Image = CartesBinairesV1.Properties.Resources._16;
+                        break;
+                    case 6:
+                        Bits[i].Image = CartesBinairesV1.Properties.Resources._32;
+                        break;
+                }
             }
         }
 

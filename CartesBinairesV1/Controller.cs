@@ -46,7 +46,7 @@ namespace CartesBinairesV1
 
         public void UpdateView()
         {
-            View.UpdateView();
+            //View.UpdateView();
         }
 
         public List<int> ReturnBits()
