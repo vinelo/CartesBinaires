@@ -8,46 +8,60 @@ namespace CartesBinairesV1
 {
     class Model
     {
-        public const int NUMBER_OF_BITS = 6;
 
-        private Bit[] _bits;
+        private List<Bit> _bits;
 
-        internal Bit[] Bits
+        internal List<Bit> Bits
         {
-            get { return _bits; }
-            set { _bits = value; }
+            get
+            {
+                return _bits;
+            }
+
+            set
+            {
+                _bits = value;
+            }
         }
-
-        public Model()
+        public Model() : this(8) { }
+        public Model(int NumberOfBit)
         {
-            Bits = new Bit[NUMBER_OF_BITS];
+            Bits = new List<Bit>();
+            //new Bit[NUMBER_OF_BITS];
             int ValueOfBit = 1;
 
-            for (int i = 0; i < NUMBER_OF_BITS; i++)
+            for (int i = 0; i < NumberOfBit ; i++)
             {
-                Bits[i] = new Bit(ValueOfBit);
-                ValueOfBit *= 2;
                 switch(i)
                 {
+                    case 0:
+                        Bits.Add(new Bit(ValueOfBit, CartesBinairesV1.Properties.Resources._1));
+                        break;
                     case 1:
-                        Bits[i].Image = CartesBinairesV1.Properties.Resources._1;
+                        Bits.Add(new Bit(ValueOfBit, CartesBinairesV1.Properties.Resources._2));
                         break;
                     case 2:
-                        Bits[i].Image = CartesBinairesV1.Properties.Resources._2;
+                        Bits.Add(new Bit(ValueOfBit, CartesBinairesV1.Properties.Resources._4));
                         break;
                     case 3:
-                        Bits[i].Image = CartesBinairesV1.Properties.Resources._4;
+                        Bits.Add(new Bit(ValueOfBit, CartesBinairesV1.Properties.Resources._8));
                         break;
                     case 4:
-                        Bits[i].Image = CartesBinairesV1.Properties.Resources._8;
+                        Bits.Add(new Bit(ValueOfBit, CartesBinairesV1.Properties.Resources._16));
                         break;
                     case 5:
-                        Bits[i].Image = CartesBinairesV1.Properties.Resources._16;
+                        Bits.Add(new Bit(ValueOfBit, CartesBinairesV1.Properties.Resources._32));
                         break;
                     case 6:
-                        Bits[i].Image = CartesBinairesV1.Properties.Resources._32;
+                        Bits.Add(new Bit(ValueOfBit, CartesBinairesV1.Properties.Resources._1));
                         break;
+                    case 7:
+                        Bits.Add(new Bit(ValueOfBit, CartesBinairesV1.Properties.Resources._2));
+                        break;
+
                 }
+
+                ValueOfBit *= 2;
             }
         }
 

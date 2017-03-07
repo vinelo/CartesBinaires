@@ -16,3 +16,12 @@ C:\Users\NAEFV_INFO\Desktop\CartesBinaires\CartesBinairesV1\obj\Debug\CartesBina
 C:\Users\NAEFV_INFO\Desktop\CartesBinaires\CartesBinairesV1\obj\Debug\CartesBinairesV1.View.resources
 C:\Users\NAEFV_INFO\Desktop\CartesBinaires\CartesBinairesV1\obj\Debug\CartesBinairesV1.Properties.Resources.resources
 C:\Users\NAEFV_INFO\Desktop\CartesBinaires\CartesBinairesV1\obj\Debug\CartesBinairesV1.csproj.GenerateResource.Cache
+C:\Users\I.IN-P4B\Desktop\CartesBinaires\CartesBinairesV1\bin\Debug\CartesBinairesV1.exe.config
+C:\Users\I.IN-P4B\Desktop\CartesBinaires\CartesBinairesV1\obj\Debug\CartesBinairesV1.exe
+C:\Users\I.IN-P4B\Desktop\CartesBinaires\CartesBinairesV1\obj\Debug\CartesBinairesV1.pdb
+C:\Users\I.IN-P4B\Desktop\CartesBinaires\CartesBinairesV1\bin\Debug\CartesBinairesV1.exe
+C:\Users\I.IN-P4B\Desktop\CartesBinaires\CartesBinairesV1\bin\Debug\CartesBinairesV1.pdb
+C:\Users\I.IN-P4B\Desktop\CartesBinaires\CartesBinairesV1\obj\Debug\CartesBinairesV1.csprojResolveAssemblyReference.cache
+C:\Users\I.IN-P4B\Desktop\CartesBinaires\CartesBinairesV1\obj\Debug\CartesBinairesV1.View.resources
+C:\Users\I.IN-P4B\Desktop\CartesBinaires\CartesBinairesV1\obj\Debug\CartesBinairesV1.Properties.Resources.resources
+C:\Users\I.IN-P4B\Desktop\CartesBinaires\CartesBinairesV1\obj\Debug\CartesBinairesV1.csproj.GenerateResource.Cache
