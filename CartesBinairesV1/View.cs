@@ -124,20 +124,20 @@ namespace CartesBinairesV1
                 gbx_Bits.Controls.Add(card);
 
                 Label lblEnable = new Label();
-                lblEnable.Location = new Point(LeftLocation + 45, 10);
+                lblEnable.Location = new Point(LeftLocation + 40, 40);
                 lblEnable.Text = Convert.ToString(2);
                 lblEnable.Width = 30;
                 LblEnables.Add(lblEnable);
                 lblEnable.Show();
-                this.Controls.Add(lblEnable);
+                gbx_Nombre.Controls.Add(lblEnable);
 
                 Label lblValue = new Label();
-                lblValue.Location = new Point(LeftLocation + 45, 220);
+                lblValue.Location = new Point(LeftLocation + 40, 40);
                 lblValue.Text = "1";
                 lblValue.Show();
                 LblValues.Add(lblValue);
                 lblValue.Width = 30;
-                this.Controls.Add(lblValue);
+                gbx_Calcul.Controls.Add(lblValue);
 
                 LeftLocation = LeftLocation - widthOfCard - SPACEBETWEENCARD;
 
