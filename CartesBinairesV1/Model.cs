@@ -53,10 +53,10 @@ namespace CartesBinairesV1
                         Bits.Add(new Bit(ValueOfBit, CartesBinairesV1.Properties.Resources._32));
                         break;
                     case 6:
-                        Bits.Add(new Bit(ValueOfBit, CartesBinairesV1.Properties.Resources._1));
+                        Bits.Add(new Bit(ValueOfBit, CartesBinairesV1.Properties.Resources._64));
                         break;
                     case 7:
-                        Bits.Add(new Bit(ValueOfBit, CartesBinairesV1.Properties.Resources._2));
+                        Bits.Add(new Bit(ValueOfBit, CartesBinairesV1.Properties.Resources._128));
                         break;
 
                 }
@@ -118,5 +118,33 @@ namespace CartesBinairesV1
 
             return ListBit;
         }
+
+        public void ConvertToBinary(int DecimalNumber)
+        {
+            List<bool> isEnabled = new List<bool>();
+
+            for (int i = 0; i < this.Bits.Count; i++)
+            {
+                int rest = DecimalNumber % 2;
+                DecimalNumber = DecimalNumber / 2;
+
+                if (rest == 0)
+                {
+                    isEnabled.Add(false);
+                }
+                else
+                {
+                    isEnabled.Add(true);
+                }
+            }
+
+            //isEnabled.Reverse();
+
+            for (int i = 0; i < this.Bits.Count; i++)
+            {
+                Bits[i].Enable = isEnabled[i];
+            }
+        }
+
     }
 }

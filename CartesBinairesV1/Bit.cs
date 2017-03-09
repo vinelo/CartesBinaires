@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 using System.Drawing;
 
 namespace CartesBinairesV1
@@ -24,7 +19,12 @@ namespace CartesBinairesV1
         public bool Enable
         {
             get { return _enable; }
-            set { _enable = value; }
+            set {
+                if (value == true)
+                    this.Image = ImageBit;
+                else
+                    this.Image = Backimage;
+                _enable = value; }
         }
 
         private Bitmap _backimage;
@@ -57,7 +57,13 @@ namespace CartesBinairesV1
             }
         }
 
-
+        public void EnableDisable()
+        {
+            if (this.Enable == false)
+                this.Enable = true;
+            else
+                this.Enable = false;
+        }
 
         public Bit(int ValueOfBit, Bitmap Image)
         {

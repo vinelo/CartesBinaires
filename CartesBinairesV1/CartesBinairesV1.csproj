@@ -44,9 +44,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Bit.cs" />
+    <Compile Include="Bit.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Model.cs" />
-    <Compile Include="Controller.cs" />
     <Compile Include="View.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -101,6 +102,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\DosDeCarte.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\128.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

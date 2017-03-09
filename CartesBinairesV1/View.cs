@@ -1,21 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CartesBinairesV1
 {
     public partial class View : Form
     {
-        
+
         const int HEIGHTOFCARD = 142;
         const int SPACEBETWEENCARD = 10;
-        
+        int numberAuto = 0;
+        bool Croissant;
+
         private PictureBox[] _cards;
 
         public PictureBox[] Cards
@@ -32,130 +29,198 @@ namespace CartesBinairesV1
             set { _model = value; }
         }
 
+        private List<Label> _lblValues;
+
+        public List<Label> LblValues
+        {
+            get
+            {
+                return _lblValues;
+            }
+
+            set
+            {
+                _lblValues = value;
+            }
+        }
+
+        private List<Label> _lblEnables;
+
+        public List<Label> LblEnables
+        {
+            get
+            {
+                return _lblEnables;
+            }
+
+            set
+            {
+                _lblEnables = value;
+            }
+        }
+        private int _numberToStart;
+
+        public int NumberToStart
+        {
+            get
+            {
+                return _numberToStart;
+            }
+
+            set
+            {
+                _numberToStart = value;
+            }
+        }
+
         public View()
         {
             InitializeComponent();
-            int numberOfBits = 8;
-            int widthOfCard = (this.gbx_Bits.Width / numberOfBits) - SPACEBETWEENCARD;
-            Model = new Model(numberOfBits);
-            
-            int LeftLocation = SPACEBETWEENCARD;
-            int Count = 1;
+            newBits(8);
+        }
+
+        public void newBits(int paramNumberOfBits)
+        {
+            if (LblValues != null)
+            {
+                foreach (Label LblValue in LblValues)
+                {
+                    LblValue.Hide();
+                    this.Controls.Remove(LblValue);
+                }
+            }
+            if (LblEnables != null)
+            {
+                foreach (Label LblEnable in LblEnables)
+                {
+                    LblEnable.Hide();
+                    this.Controls.Remove(LblEnable);
+                }
+            }
+            if (Model != null)
+            {
+                foreach (Bit bit in Model.Bits)
+                {
+                    bit.Hide();
+                    this.Controls.Remove(bit);
+                }
+            }
+            this.NumberToStart = paramNumberOfBits;
+            int widthOfCard = (this.gbx_Bits.Width / NumberToStart) - SPACEBETWEENCARD;
+            Model = new Model(NumberToStart);
+            LblValues = new List<Label>();
+            LblEnables = new List<Label>();
+
+            int LeftLocation = gbx_Bits.Width - SPACEBETWEENCARD - widthOfCard;
             foreach (PictureBox card in Model.Bits)
             {
-                
+                gbx_Bits.Controls.Add(card);
                 card.Location = new Point(LeftLocation, 20);
-                card.Name = "pic" + Convert.ToString(Count);
                 card.Size = new Size(widthOfCard, HEIGHTOFCARD);
                 card.SizeMode = PictureBoxSizeMode.StretchImage;
                 card.Image = CartesBinairesV1.Properties.Resources.DosDeCarte;
                 card.Show();
+                card.Click += new EventHandler(this.card_Click);
                 gbx_Bits.Controls.Add(card);
 
-                LeftLocation = LeftLocation + widthOfCard + SPACEBETWEENCARD;
+                Label lblEnable = new Label();
+                lblEnable.Location = new Point(LeftLocation + 45, 10);
+                lblEnable.Text = Convert.ToString(2);
+                lblEnable.Width = 30;
+                LblEnables.Add(lblEnable);
+                lblEnable.Show();
+                this.Controls.Add(lblEnable);
+
+                Label lblValue = new Label();
+                lblValue.Location = new Point(LeftLocation + 45, 220);
+                lblValue.Text = "1";
+                lblValue.Show();
+                LblValues.Add(lblValue);
+                lblValue.Width = 30;
+                this.Controls.Add(lblValue);
+
+                LeftLocation = LeftLocation - widthOfCard - SPACEBETWEENCARD;
 
             }
+
+            UpdateView();
         }
 
-
-
+        void card_Click(object sender, System.EventArgs e)
+        {
+            Bit bit = (Bit)sender;
+            bit.EnableDisable();
+            UpdateView();
+        }
 
         public void UpdateView()
         {
-            //ListBinaryValue = Model.ReturnBits();
+            for (int i = 0; i < NumberToStart; i++)
+            {
+                if (Model.Bits[i].Enable == false)
+                {
+                    LblValues[i].Text = "0";
+                    LblEnables[i].Text = "0";
+                }
+                else
+                {
+                    LblValues[i].Text = Convert.ToString(Model.Bits[i].Value);
+                    LblEnables[i].Text = "1";
+                }
+            }
 
-            //if(ListBinaryValue[0] != 0)
-            //{
-            //    pbx_bit1.Image = CartesBinairesV1.Properties.Resources._1;
-            //}
-            //else
-            //{
-            //    pbx_bit1.Image = CartesBinairesV1.Properties.Resources.DosDeCarte;
-            //}
-
-            //if (ListBinaryValue[1] != 0)
-            //{
-            //    pbx_bit2.Image = CartesBinairesV1.Properties.Resources._2;
-            //}
-            //else
-            //{
-            //    pbx_bit2.Image = CartesBinairesV1.Properties.Resources.DosDeCarte;
-            //}
-
-            //if (ListBinaryValue[2] != 0)
-            //{
-            //    pbx_bit3.Image = CartesBinairesV1.Properties.Resources._4;
-            //}
-            //else
-            //{
-            //    pbx_bit3.Image = CartesBinairesV1.Properties.Resources.DosDeCarte;
-            //}
-
-            //if (ListBinaryValue[3] != 0)
-            //{
-            //    pbx_bit4.Image = CartesBinairesV1.Properties.Resources._8;
-            //}
-            //else
-            //{
-            //    pbx_bit4.Image = CartesBinairesV1.Properties.Resources.DosDeCarte;
-            //}
-
-            //if (ListBinaryValue[4] != 0)
-            //{
-            //    pbx_bit5.Image = CartesBinairesV1.Properties.Resources._16;
-            //}
-            //else
-            //{
-            //    pbx_bit5.Image = CartesBinairesV1.Properties.Resources.DosDeCarte;
-            //}
-
-            //if (ListBinaryValue[5] != 0)
-            //{
-            //    pbx_bit6.Image = CartesBinairesV1.Properties.Resources._32;
-            //}
-            //else
-            //{
-            //    pbx_bit6.Image = CartesBinairesV1.Properties.Resources.DosDeCarte;
-            //}
-
-            //label1.Text = Convert.ToString(Model.ConvertToDecimalValue());
+            lblResult.Text = Convert.ToString(Model.ConvertToDecimalValue());
 
         }
 
-        private void pbx_bit1_Click(object sender, EventArgs e)
+        private void btn_Croissant_Click(object sender, EventArgs e)
         {
-            Model.EnableDisable(0);
+            numberAuto = Model.ConvertToDecimalValue();
+            Croissant = true;
+            tmrAutoDec.Enabled = true;
+            btn_Stop.Enabled = true;
+        }
+
+        private void tmrAutoDec_Tick(object sender, EventArgs e)
+        {
+            if (Croissant == true)
+            {
+                Model.ConvertToBinary(numberAuto);
+                numberAuto++;
+                if(Model.ConvertToDecimalValue() == 255)
+                {
+                    tmrAutoDec.Enabled = false;
+                }
+            }
+            else
+            {
+                Model.ConvertToBinary(numberAuto);
+                numberAuto--;
+                if (Model.ConvertToDecimalValue() == 0)
+                {
+                    tmrAutoDec.Enabled = false;
+                }
+            }
             UpdateView();
         }
 
-        private void pbx_bit5_Click(object sender, EventArgs e)
+        private void btn_Decroissant_Click(object sender, EventArgs e)
         {
-            Model.EnableDisable(4);
-            UpdateView();
+            numberAuto = Model.ConvertToDecimalValue();
+            Croissant = false;
+            tmrAutoDec.Enabled = true;
+            btn_Stop.Enabled = true;
         }
 
-        private void pbx_bit2_Click(object sender, EventArgs e)
+        private void numNumberOfBits_ValueChanged(object sender, EventArgs e)
         {
-            Model.EnableDisable(1);
-            UpdateView();
+            newBits(Convert.ToInt32(numNumberOfBits.Value));
         }
 
-        private void pbx_bit3_Click(object sender, EventArgs e)
+        private void btn_Stop_Click(object sender, EventArgs e)
         {
-            Model.EnableDisable(2);
-            UpdateView();
-        }
-
-        private void pbx_bit4_Click(object sender, EventArgs e)
-        {
-            Model.EnableDisable(3);
-            UpdateView();
-        }
-
-        private void pbx_bit6_Click(object sender, EventArgs e)
-        {
-            Model.EnableDisable(5);
-            UpdateView();
+            tmrAutoDec.Enabled = false;
+            btn_Stop.Enabled = false;
         }
     }
 }
