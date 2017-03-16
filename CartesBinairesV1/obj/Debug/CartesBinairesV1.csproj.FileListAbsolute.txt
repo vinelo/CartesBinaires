@@ -25,3 +25,4 @@ C:\Users\I.IN-P4B\Desktop\CartesBinaires\CartesBinairesV1\obj\Debug\CartesBinair
 C:\Users\I.IN-P4B\Desktop\CartesBinaires\CartesBinairesV1\obj\Debug\CartesBinairesV1.View.resources
 C:\Users\I.IN-P4B\Desktop\CartesBinaires\CartesBinairesV1\obj\Debug\CartesBinairesV1.Properties.Resources.resources
 C:\Users\I.IN-P4B\Desktop\CartesBinaires\CartesBinairesV1\obj\Debug\CartesBinairesV1.csproj.GenerateResource.Cache
+C:\Users\I.IN-P4B\Desktop\CartesBinaires\CartesBinairesV1\obj\Debug\CartesBinairesV1.AboutBox.resources

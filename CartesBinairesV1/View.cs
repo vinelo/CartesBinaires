@@ -60,7 +60,7 @@ namespace CartesBinairesV1
         }
         private int _numberToStart;
 
-        public int NumberToStart
+        public int NumberOfBits
         {
             get
             {
@@ -73,6 +73,20 @@ namespace CartesBinairesV1
             }
         }
 
+        private Label _lblCalcul;
+
+        public Label LblCalcul
+        {
+            get
+            {
+                return _lblCalcul;
+            }
+
+            set
+            {
+                _lblCalcul = value;
+            }
+        }
         public View()
         {
             InitializeComponent();
@@ -105,9 +119,9 @@ namespace CartesBinairesV1
                     this.Controls.Remove(bit);
                 }
             }
-            this.NumberToStart = paramNumberOfBits;
-            int widthOfCard = (this.gbx_Bits.Width / NumberToStart) - SPACEBETWEENCARD;
-            Model = new Model(NumberToStart);
+            this.NumberOfBits = paramNumberOfBits;
+            int widthOfCard = (this.gbx_Bits.Width / 8) - SPACEBETWEENCARD;
+            Model = new Model(NumberOfBits);
             LblValues = new List<Label>();
             LblEnables = new List<Label>();
 
@@ -124,23 +138,26 @@ namespace CartesBinairesV1
                 gbx_Bits.Controls.Add(card);
 
                 Label lblEnable = new Label();
-                lblEnable.Location = new Point(LeftLocation + 40, 40);
+                lblEnable.Location = new Point(LeftLocation + 30, 25);
                 lblEnable.Text = Convert.ToString(2);
                 lblEnable.Width = 30;
+                lblEnable.Height = 30;
                 LblEnables.Add(lblEnable);
+                lblEnable.Font = new Font("Arial", 20);
+
                 lblEnable.Show();
                 gbx_Nombre.Controls.Add(lblEnable);
 
                 Label lblValue = new Label();
-                lblValue.Location = new Point(LeftLocation + 40, 40);
+                lblValue.Location = new Point(LeftLocation + 35, 200);
                 lblValue.Text = "1";
                 lblValue.Show();
                 LblValues.Add(lblValue);
                 lblValue.Width = 30;
-                gbx_Calcul.Controls.Add(lblValue);
+                gbx_Bits.Controls.Add(lblValue);
 
                 LeftLocation = LeftLocation - widthOfCard - SPACEBETWEENCARD;
-
+                
             }
 
             UpdateView();
@@ -155,19 +172,44 @@ namespace CartesBinairesV1
 
         public void UpdateView()
         {
-            for (int i = 0; i < NumberToStart; i++)
+            if (LblCalcul != null)
+            {
+                LblCalcul.Hide();
+                this.Controls.Remove(LblCalcul);
+            }
+            LblCalcul = new Label();
+            LblCalcul.Text = " = ";
+            for (int i = 0; i < NumberOfBits; i++)
             {
                 if (Model.Bits[i].Enable == false)
                 {
                     LblValues[i].Text = "0";
                     LblEnables[i].Text = "0";
+                    if(Model.Bits[i].Value == 1)
+                        LblCalcul.Text = "0 " + LblCalcul.Text;
+                    else
+                        LblCalcul.Text = "0 + " + LblCalcul.Text;
                 }
                 else
                 {
                     LblValues[i].Text = Convert.ToString(Model.Bits[i].Value);
                     LblEnables[i].Text = "1";
+
+                    if (Model.Bits[i].Value == 1)
+                        LblCalcul.Text = Convert.ToString(Model.Bits[i].Value) + " " + LblCalcul.Text;
+                    else
+                        LblCalcul.Text = Convert.ToString(Model.Bits[i].Value) + " + " + LblCalcul.Text;
+
                 }
             }
+            LblCalcul.Show();
+            LblCalcul.AutoSize = false;
+            LblCalcul.Height = gbx_Calcul.Height;
+            LblCalcul.Width = gbx_Calcul.Width;
+            LblCalcul.TextAlign = ContentAlignment.MiddleCenter;
+            gbx_Calcul.Controls.Add(LblCalcul);
+            LblCalcul.Location = new Point(0, 0);
+            LblCalcul.Font = new Font("Arial", 20);
 
             lblResult.Text = Convert.ToString(Model.ConvertToDecimalValue());
 
@@ -178,7 +220,6 @@ namespace CartesBinairesV1
             numberAuto = Model.ConvertToDecimalValue();
             Croissant = true;
             tmrAutoDec.Enabled = true;
-            btn_Stop.Enabled = true;
         }
 
         private void tmrAutoDec_Tick(object sender, EventArgs e)
@@ -209,18 +250,102 @@ namespace CartesBinairesV1
             numberAuto = Model.ConvertToDecimalValue();
             Croissant = false;
             tmrAutoDec.Enabled = true;
-            btn_Stop.Enabled = true;
-        }
-
-        private void numNumberOfBits_ValueChanged(object sender, EventArgs e)
-        {
-            newBits(Convert.ToInt32(numNumberOfBits.Value));
         }
 
         private void btn_Stop_Click(object sender, EventArgs e)
         {
             tmrAutoDec.Enabled = false;
-            btn_Stop.Enabled = false;
+        }
+
+        private void View_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void àProposDeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AboutBox ab = new AboutBox();
+            ab.ShowDialog();
+        }
+
+        private void tsiChronologic_Click(object sender, EventArgs e)
+        {
+            numberAuto = Model.ConvertToDecimalValue();
+            Croissant = true;
+            tmrAutoDec.Enabled = true;
+            tsiChronologic.Checked = true;
+            tsiChronologicInverse.Checked = false;
+            tsiManual.Checked = false;
+        }
+
+        private void tsiChronologicInverse_Click(object sender, EventArgs e)
+        {
+            numberAuto = Model.ConvertToDecimalValue();
+            Croissant = false;
+            tmrAutoDec.Enabled = true;
+            tsiChronologic.Checked = false;
+            tsiChronologicInverse.Checked = true;
+            tsiManual.Checked = false;
+        }
+
+        private void tsiManual_Click(object sender, EventArgs e)
+        {
+            tmrAutoDec.Enabled = false;
+            tsiChronologic.Checked = false;
+            tsiChronologicInverse.Checked = false;
+            tsiManual.Checked = true;
+        }
+
+        private void tsiShowCard_Click(object sender, EventArgs e)
+        {
+            Model.SetAllTo(true);
+            UpdateView();
+        }
+
+        private void tsmHideCarde_Click(object sender, EventArgs e)
+        {
+            Model.SetAllTo(false);
+            UpdateView();
+        }
+
+        private void tsiOne_Click(object sender, EventArgs e)
+        {
+            newBits(Convert.ToInt32(1));
+        }
+
+        private void tsiTwo_Click(object sender, EventArgs e)
+        {
+            newBits(Convert.ToInt32(2));
+        }
+
+        private void tsiThree_Click(object sender, EventArgs e)
+        {
+            newBits(Convert.ToInt32(3));
+        }
+
+        private void tsiFour_Click(object sender, EventArgs e)
+        {
+            newBits(Convert.ToInt32(4));
+        }
+
+        private void tsiFive_Click(object sender, EventArgs e)
+        {
+            newBits(Convert.ToInt32(5));
+        }
+
+        private void tsiSix_Click(object sender, EventArgs e)
+        {
+            newBits(Convert.ToInt32(6));
+        }
+
+        private void tsiEight_Click(object sender, EventArgs e)
+        {
+            newBits(Convert.ToInt32(8));
+        }
+
+        private void tsiLeave_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

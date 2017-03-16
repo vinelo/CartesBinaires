@@ -65,13 +65,14 @@ namespace CartesBinairesV1
             }
         }
 
-        public void SetAllToFalse()
+        public void SetAllTo(bool Value)
         {
-            foreach(Bit bit in Bits)
+            foreach (Bit bit in Bits)
             {
-                bit.Enable = false;
+                bit.Enable = Value;
             }
         }
+
 
         public int ConvertToDecimalValue()
         {
