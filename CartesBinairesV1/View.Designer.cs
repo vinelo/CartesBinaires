@@ -139,11 +139,13 @@
             this.tsmFolder.Name = "tsmFolder";
             this.tsmFolder.Size = new System.Drawing.Size(54, 20);
             this.tsmFolder.Text = "Fichier";
+            this.tsmFolder.Click += new System.EventHandler(this.tsmFolder_Click);
             // 
             // tsiLeave
             // 
             this.tsiLeave.Name = "tsiLeave";
-            this.tsiLeave.Size = new System.Drawing.Size(111, 22);
+            this.tsiLeave.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4)));
+            this.tsiLeave.Size = new System.Drawing.Size(153, 22);
             this.tsiLeave.Text = "Quitter";
             this.tsiLeave.Click += new System.EventHandler(this.tsiLeave_Click);
             // 
@@ -165,14 +167,16 @@
             // tsiChronologic
             // 
             this.tsiChronologic.Name = "tsiChronologic";
-            this.tsiChronologic.Size = new System.Drawing.Size(311, 22);
+            this.tsiChronologic.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Shift | System.Windows.Forms.Keys.F1)));
+            this.tsiChronologic.Size = new System.Drawing.Size(362, 22);
             this.tsiChronologic.Text = "Mode chronologique ( automatique )";
             this.tsiChronologic.Click += new System.EventHandler(this.tsiChronologic_Click);
             // 
             // tsiChronologicInverse
             // 
             this.tsiChronologicInverse.Name = "tsiChronologicInverse";
-            this.tsiChronologicInverse.Size = new System.Drawing.Size(311, 22);
+            this.tsiChronologicInverse.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Shift | System.Windows.Forms.Keys.F2)));
+            this.tsiChronologicInverse.Size = new System.Drawing.Size(362, 22);
             this.tsiChronologicInverse.Text = "Mode chronologique inversé ( automatique )";
             this.tsiChronologicInverse.Click += new System.EventHandler(this.tsiChronologicInverse_Click);
             // 
@@ -181,7 +185,8 @@
             this.tsiManual.Checked = true;
             this.tsiManual.CheckState = System.Windows.Forms.CheckState.Checked;
             this.tsiManual.Name = "tsiManual";
-            this.tsiManual.Size = new System.Drawing.Size(311, 22);
+            this.tsiManual.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Shift | System.Windows.Forms.Keys.F3)));
+            this.tsiManual.Size = new System.Drawing.Size(362, 22);
             this.tsiManual.Text = "Mode manuel";
             this.tsiManual.Click += new System.EventHandler(this.tsiManual_Click);
             // 
@@ -193,14 +198,16 @@
             // tsiShowCard
             // 
             this.tsiShowCard.Name = "tsiShowCard";
-            this.tsiShowCard.Size = new System.Drawing.Size(311, 22);
+            this.tsiShowCard.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.F1)));
+            this.tsiShowCard.Size = new System.Drawing.Size(362, 22);
             this.tsiShowCard.Text = "Retourner toutes les cartes";
             this.tsiShowCard.Click += new System.EventHandler(this.tsiShowCard_Click);
             // 
             // tsmHideCarde
             // 
             this.tsmHideCarde.Name = "tsmHideCarde";
-            this.tsmHideCarde.Size = new System.Drawing.Size(311, 22);
+            this.tsmHideCarde.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.F2)));
+            this.tsmHideCarde.Size = new System.Drawing.Size(362, 22);
             this.tsmHideCarde.Text = "Cacher toutes les cartes";
             this.tsmHideCarde.Click += new System.EventHandler(this.tsmHideCarde_Click);
             // 
@@ -220,55 +227,69 @@
             this.tsiSix,
             this.tsiEight});
             this.tsiNumberOfCard.Name = "tsiNumberOfCard";
-            this.tsiNumberOfCard.Size = new System.Drawing.Size(311, 22);
+            this.tsiNumberOfCard.Size = new System.Drawing.Size(362, 22);
             this.tsiNumberOfCard.Text = "Nombre de cartes";
             // 
             // tsiOne
             // 
             this.tsiOne.Name = "tsiOne";
-            this.tsiOne.Size = new System.Drawing.Size(80, 22);
+            this.tsiOne.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
+            | System.Windows.Forms.Keys.D1)));
+            this.tsiOne.Size = new System.Drawing.Size(152, 22);
             this.tsiOne.Text = "1";
             this.tsiOne.Click += new System.EventHandler(this.tsiOne_Click);
             // 
             // tsiTwo
             // 
             this.tsiTwo.Name = "tsiTwo";
-            this.tsiTwo.Size = new System.Drawing.Size(80, 22);
+            this.tsiTwo.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
+            | System.Windows.Forms.Keys.D2)));
+            this.tsiTwo.Size = new System.Drawing.Size(152, 22);
             this.tsiTwo.Text = "2";
             this.tsiTwo.Click += new System.EventHandler(this.tsiTwo_Click);
             // 
             // tsiThree
             // 
             this.tsiThree.Name = "tsiThree";
-            this.tsiThree.Size = new System.Drawing.Size(80, 22);
+            this.tsiThree.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
+            | System.Windows.Forms.Keys.D3)));
+            this.tsiThree.Size = new System.Drawing.Size(152, 22);
             this.tsiThree.Text = "3";
             this.tsiThree.Click += new System.EventHandler(this.tsiThree_Click);
             // 
             // tsiFour
             // 
             this.tsiFour.Name = "tsiFour";
-            this.tsiFour.Size = new System.Drawing.Size(80, 22);
+            this.tsiFour.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
+            | System.Windows.Forms.Keys.D4)));
+            this.tsiFour.Size = new System.Drawing.Size(152, 22);
             this.tsiFour.Text = "4";
             this.tsiFour.Click += new System.EventHandler(this.tsiFour_Click);
             // 
             // tsiFive
             // 
             this.tsiFive.Name = "tsiFive";
-            this.tsiFive.Size = new System.Drawing.Size(80, 22);
+            this.tsiFive.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
+            | System.Windows.Forms.Keys.D5)));
+            this.tsiFive.Size = new System.Drawing.Size(152, 22);
             this.tsiFive.Text = "5";
             this.tsiFive.Click += new System.EventHandler(this.tsiFive_Click);
             // 
             // tsiSix
             // 
             this.tsiSix.Name = "tsiSix";
-            this.tsiSix.Size = new System.Drawing.Size(80, 22);
+            this.tsiSix.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
+            | System.Windows.Forms.Keys.D6)));
+            this.tsiSix.Size = new System.Drawing.Size(152, 22);
             this.tsiSix.Text = "6";
             this.tsiSix.Click += new System.EventHandler(this.tsiSix_Click);
             // 
             // tsiEight
             // 
             this.tsiEight.Name = "tsiEight";
-            this.tsiEight.Size = new System.Drawing.Size(80, 22);
+            this.tsiEight.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
+            | System.Windows.Forms.Keys.D8)));
+            this.tsiEight.Size = new System.Drawing.Size(152, 22);
             this.tsiEight.Text = "8";
             this.tsiEight.Click += new System.EventHandler(this.tsiEight_Click);
             // 
@@ -283,7 +304,8 @@
             // àProposDeToolStripMenuItem
             // 
             this.àProposDeToolStripMenuItem.Name = "àProposDeToolStripMenuItem";
-            this.àProposDeToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
+            this.àProposDeToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.P)));
+            this.àProposDeToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
             this.àProposDeToolStripMenuItem.Text = "À propos de...";
             this.àProposDeToolStripMenuItem.Click += new System.EventHandler(this.àProposDeToolStripMenuItem_Click);
             // 
